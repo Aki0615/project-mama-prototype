@@ -198,6 +198,7 @@ class ChatBubble extends StatelessWidget {
     required this.timestamp,
   });
 
+  // チャットバブルの時刻表示を整形するヘルパー関数
   String _formatTime(DateTime date) {
     return "${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}";
   }
@@ -211,7 +212,7 @@ class ChatBubble extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           if (!isUser) ...[
-             // Placeholder for avatar if needed next to bubble, currently handled in header/logic
+             // ユーザー以外の場合はアバターを表示する（現在はヘッダー/ロジックで管理）
           ],
           Flexible(
             child: Column(
@@ -221,7 +222,7 @@ class ChatBubble extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                   constraints: const BoxConstraints(maxWidth: 280),
                   decoration: BoxDecoration(
-                    color: isUser ? const Color(0xFFFFA726) : Colors.white, // Orange-400 or White
+                    color: isUser ? const Color(0xFFFFA726) : Colors.white, // ユーザーはオレンジ、AIは白
                     borderRadius: BorderRadius.only(
                       topLeft: const Radius.circular(16),
                       topRight: const Radius.circular(16),
